@@ -13,10 +13,12 @@
 
 using namespace std;
 
-class Dungeon{
+class Dungeon
+{
 private:
     Player player;
     vector<Room> rooms;
+
 public:
     Dungeon();
     /* Create a new player, and give him/her basic status */
@@ -29,7 +31,7 @@ public:
     void handleMovement();
 
     /* Deal with player's iteraction with objects in that room */
-    void handleEvent(Object*);
+    void handleEvent(Object *);
 
     /* Deal with all game initial setting       */
     /* Including create player, create map etc  */
@@ -39,7 +41,7 @@ public:
     /* including showing the action list */
     /* that player can do at that room   */
     /* and dealing with player's input   */
-    void chooseAction(vector<Object*>);
+    void chooseAction(vector<Object *>);
 
     /* Check whether the game should end or not */
     /* Including player victory, or he/she dead */
@@ -48,6 +50,5 @@ public:
     /* Deal with the whole game process */
     void runDungeon();
 };
-
 
 #endif // DUNGEON_H_INCLUDED

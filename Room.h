@@ -8,36 +8,50 @@
 
 using namespace std;
 
+struct RoomType
+{
+    string system;
+    string type;
+    // string description;
+};
+
 class Room
 {
 private:
-    Room* upRoom;
-    Room* downRoom;
-    Room* leftRoom;
-    Room* rightRoom;
+    Room *upRoom = nullptr;
+    Room *downRoom = nullptr;
+    Room *leftRoom = nullptr;
+    Room *rightRoom = nullptr;
     bool isExit;
     int index;
-    vector<Object*> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
+    RoomType type;
+    vector<Object *> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
 public:
     Room();
-    Room(bool, int, vector<Object*>);
-    bool popObject(Object*); /*pop out the specific object, used when the interaction is done*/
+    Room(bool, RoomType, int, vector<Object *>);
+    bool popObject(Object *); /*pop out the specific object, used when the interaction is done*/
 
     /* Set & Get function*/
-    void setUpRoom(Room*);
-    void setDownRoom(Room*);
-    void setLeftRoom(Room*);
-    void setRightRoom(Room*);
+    void setUpRoom(Room *);
+    void setDownRoom(Room *);
+    void setLeftRoom(Room *);
+    void setRightRoom(Room *);
+    void setUDRoom(Room *down);
+    void setLRRoom(Room *right);
     void setIsExit(bool);
+    void setType(RoomType);
     void setIndex(int);
-    void setObjects(vector<Object*>);
+    void setObjects(vector<Object *>);
     bool getIsExit();
     int getIndex();
-    vector<Object*> getObjects();
-    Room* getUpRoom();
-    Room* getDownRoom();
-    Room* getLeftRoom();
-    Room* getRightRoom();
+    string getSys();
+    string getType();
+    vector<Object *> getObjects();
+    Room *getUpRoom();
+    Room *getDownRoom();
+    Room *getLeftRoom();
+    Room *getRightRoom();
+    vector<string> getExit();
 };
 
 #endif // ROOM_H_INCLUDED
